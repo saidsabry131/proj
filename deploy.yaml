@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: os-final-project
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web-project
+  template:
+    metadata:
+      labels:
+        app: web-project
+    spec:
+      containers:
+        - name: web-project
+          image: saidsabry/testw
+          imagePullPolicy: IfNotPresent
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 80
